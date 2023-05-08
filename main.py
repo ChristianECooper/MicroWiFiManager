@@ -1,9 +1,9 @@
 from microwifimanager.manager import WifiManager
 
-wlan = WifiManager().get_connection()
+wlan = WifiManager('ExampleHost').get_connection()
 
 # if security is needed:
-# wlan = WifiManager(ssid="MyAccessPoint", password="myPassword", authmode=3).get_connection()
+# wlan = WifiManager('ExampleHost', ssid="MyAccessPoint", password="myPassword", authmode=3).get_connection()
 
 if wlan is None:
     print("Could not initialize the network connection.")

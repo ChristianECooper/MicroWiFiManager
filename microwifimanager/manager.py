@@ -13,11 +13,13 @@ wlan_sta = network.WLAN(network.STA_IF)
 class WifiManager:
 
     # authmodes: 0=open, 1=WEP, 2=WPA-PSK, 3=WPA2-PSK, 4=WPA/WPA2-PSK
-    def __init__(self, ssid='WifiManager', password='', authmode=0):
+    def __init__(self, host_name, ssid='WifiManager', password='', authmode=0):
+        assert host_name, 'Host name must be set when initialising WifiManager'
         self.ssid = ssid
         self.password = password
         self.authmode = authmode
         self.server_socket = None
+        network.hostname(host_name)
 
     def get_connection(self):
         """return a working WLAN(STA_IF) instance or None"""
